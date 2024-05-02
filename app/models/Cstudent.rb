@@ -1,6 +1,7 @@
-Class Student
+class Student
 
 attr_reader :name, :email, :contact
+attr_writer :name, :email, :contact
 
 def initialize(ame, email, contact)
   @name = name
@@ -8,14 +9,11 @@ def initialize(ame, email, contact)
   @contact = contact
 end
 
-  def email=(email)
-   @email= email
-  end
-def name=(name)
-  @name= name
-end
-def contact(contact)
-  @contact= contact
-end
 
 end
+
+s1= Student.new('MA Mm', 'Ma@gmail.com', '123456')
+
+puts s1.name
+puts s1.email
+puts s1.contact
