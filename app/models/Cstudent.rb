@@ -1,7 +1,11 @@
 class Student
 
-attr_reader :name, :email, :contact
-attr_writer :name, :email, :contact
+#attr_reader :name, :email, :contact
+#attr_writer :name, :email, :contact
+
+
+# attr_accessor  simplifie la création de getter et setter pour les variables d'instance d'une classe.
+attr_accessor :name, :email, :contact
 
 def initialize(ame, email, contact)
   @name = name
