@@ -1,72 +1,48 @@
-# README
+**Readme - Utilisation du FormBuilder Rails**
 
-# Resource Controllers in Rails
+Le FormBuilder de Rails est un outil essentiel pour la création de formulaires HTML dans les applications Rails. Il simplifie le processus de création de formulaires en fournissant une syntaxe claire et concise, ainsi qu'une gestion automatique de la validation des données.
 
-Resource controllers in Rails are a convenient way to organize and manage RESTful resources within your application. Here's a brief overview:
+### Utilisation de FormBuilder dans Rails :
 
-## What is a Resource Controller?
+1. **Créer un formulaire :**
+   ```ruby
+   <%= form_with model: @model_object do |form| %>
+     <%= form.label :field_name %>
+     <%= form.text_field :field_name %>
+     <%= form.submit "Submit" %>
+   <% end %>
+   ```
 
-A resource controller in Rails is a controller that handles the CRUD (Create, Read, Update, Delete) operations for a specific resource or model in your application.
+2. **Personnaliser les champs :**
+   ```ruby
+   <%= form.text_field :field_name, class: "form-control", placeholder: "Enter value" %>
+   ```
 
-## Benefits of Resource Controllers
+3. **Validation des données :**
+   ```ruby
+   # Dans le modèle
+   validates :field_name, presence: true, length: { minimum: 3 }
+   ```
 
-- **Consistency**: Resource controllers follow RESTful conventions, providing a consistent and predictable structure for handling resourceful routes.
-- **Efficiency**: By generating standard CRUD actions, resource controllers help streamline development and reduce redundant code.
-- **Readability**: Resourceful routes make it easier to understand and maintain your application's routing configuration.
+4. **Afficher les erreurs :**
+   ```ruby
+   <% if @model_object.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(@model_object.errors.count, "error") %> prohibited this object from being saved:</h2>
+       <ul>
+         <% @model_object.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   ```
 
-## Generating a Resource Controller
+### Avantages du FormBuilder :
 
-You can generate a resource controller using the Rails command-line interface (CLI). For example, to generate a resource controller for a `Post` model:
+- Syntaxe concise et intuitive.
+- Gestion automatique de la validation des données.
+- Personnalisation facile des champs de formulaire.
+- Supporte la plupart des types de champs HTML.
 
-```bash
-rails generate controller Posts
-```
-
-This command will create a `PostsController` with standard CRUD actions.
-
-## RESTful Actions
-
-Resource controllers typically include the following RESTful actions:
-
-- `index`: Display a list of resources.
-- `show`: Display a specific resource.
-- `new`: Display a form to create a new resource.
-- `create`: Create a new resource.
-- `edit`: Display a form to edit an existing resource.
-- `update`: Update an existing resource.
-- `destroy`: Delete a resource.
-
-## Custom Actions
-
-In addition to the standard RESTful actions, you can define custom actions in your resource controllers to handle specific business logic or additional functionality.
-
-## Example
-
-```ruby
-class PostsController < ApplicationController
-  def index
-    @posts = Post.all
-  end
-
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  # Other RESTful actions...
-
-  # Custom action
-  def publish
-    @post = Post.find(params[:id])
-    @post.publish!
-    redirect_to @post, notice: "Post published successfully"
-  end
-end
-```
-
-This is a basic overview of resource controllers in Rails. They provide a structured and efficient way to manage resources in your application.
-
----
-
-
--pour cree des route manuellement apres cree un controleur manuelle
-rails routes | findstr "students"
+En utilisant le FormBuilder de Rails, vous pouvez créer rapidement des formulaires interactifs et conviviaux pour vos applications web.
