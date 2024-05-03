@@ -9,4 +9,8 @@ class Student < ApplicationRecord
   #many_to_many avec courses
   has_and_belongs_to_many :courses
   #has_and_belongs_to_many :courses ,join_table: "students_courses"
+
+  #has_many  avec project
+  has_many :student_projects
+  has_many :projects, through: :student_projects
 end

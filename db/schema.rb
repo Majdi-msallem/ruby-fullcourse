@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_03_130232) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_03_132424) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -39,6 +39,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_130232) do
     t.string "name"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_projects", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "submission_date"
+    t.index ["project_id"], name: "index_student_projects_on_project_id"
+    t.index ["student_id"], name: "index_student_projects_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "lastname"
@@ -50,4 +67,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_03_130232) do
     t.string "contact"
   end
 
+  add_foreign_key "student_projects", "projects"
+  add_foreign_key "student_projects", "students"
 end
