@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Courses</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.name %></td>
+      <td><%= course.description %></td>
+      <td>
+        <%= link_to "Show", course %>
+        <%= link_to "Edit", edit_course_path(course) %>
+        <%= link_to "Delete", course, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New course", new_course_path %>
