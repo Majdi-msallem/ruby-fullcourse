@@ -3,7 +3,6 @@ class CreateCourses < ActiveRecord::Migration[7.1]
     create_table :courses do |t|
       t.string :name
       t.text :description
-
       t.timestamps
     end
   end
