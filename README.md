@@ -77,3 +77,4 @@ Migrations are a powerful tool for managing the database schema in a Rails appli
 
 ---
 
+    
