@@ -1,8 +1,12 @@
 <h1>Detail Student</h1>
 
-<p><strong>Name:</strong> <%=@student.name %></p>
-<p><strong>Lastname:</strong> <%=@student.lastname %></p>
+<!--<p><strong>Name:</strong> <%#=@student.name %></p>-->
+<!--<p><strong>Lastname:</strong> <%#=@student.lastname %></p>-->
+<!--<p><strong> Name : </strong>  <%#= @student.name %> <%#= @student.lastname %></p>-->
+
+<p><strong> Name : </strong>  <%#= @student.full_name%></p>
 <p><strong>Email :</strong> <%=@student.email %></p>
+<p><strong>Age :</strong> <%=@student.age %></p>
 
 <%= link_to 'Back', students_path %> |     <%= link_to 'Edit', edit_student_path(@student) %>
 #

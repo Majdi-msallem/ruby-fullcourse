@@ -16,6 +16,19 @@ class Student < ApplicationRecord
     end
   end
 
+
+  def full_name
+    "#{name} #{lastname}"
+  end
+
+  def age
+    if date_of_birth.present?
+      Date.today.year - date_of_birth.year
+    else
+      nil
+    end
+  end
+
   # before_create :display_greetings
   # def display_greetings
   #puts 'Hello , you executed before action  callback'
