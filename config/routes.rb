@@ -10,4 +10,14 @@ Rails.application.routes.draw do
   resources :students
 
 
+=begin
+  namespace :admin do
+    resources :students
+  end
+=end
+  scope module: :admin do
+    resources :students
+  end
+
+
 end
