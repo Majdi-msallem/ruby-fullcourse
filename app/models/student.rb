@@ -1,6 +1,9 @@
 class Student < ApplicationRecord
   has_many :blogs
-  validates :name, :lastname, :email, presence: true
+  #validation in models/concerns
+  included Validatable
+
+
   validates :email, uniqueness: true
   validates :name, :lastname, length: { minimum: 3, maximum: 50 }
   validates :name, :lastname, format: { with: /\A[a-z,A-Z]+\z/,message: 'Only lettre are allowed' }
